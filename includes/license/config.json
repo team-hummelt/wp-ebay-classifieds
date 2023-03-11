@@ -1,0 +1,20 @@
+{
+  "name": "WP eBay-Kleinanzeigen",
+  "type": "plugin",
+  "basename": "wp-ebay-classifieds",
+  "api_server_url": "https://start.hu-ku.com/theme-update/api/v2/",
+
+  "update": {
+    "update_url_git": "https://github.com/team-hummelt/wp-ebay-classifieds",
+    "update_branch": "release",
+    "branch_name": "master",
+    "update_aktiv": "1",
+    "update_type": "1"
+  },
+  "settings": {
+    "show_license_menu": "0"
+  },
+
+  "aktivierungs_file_path": "admin",
+  "aktivierungs_file": "class-wp-ebay-classifieds-admin.php"
+}

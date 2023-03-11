@@ -1,0 +1,294 @@
+<div class="container">
+    <div class="col-xl-10 col-12 mx-auto">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header fs-5 text-white bg-orange d-flex align-items-center py-3">
+                <div> Synchronisation-Einstellungen</div>
+            </div>
+            <form class="wec-admin-form">
+                <input type="hidden" name="method" value="update_import_settings">
+                <div class="card-body pb-4">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="form-check form-switch me-4">
+                            <input class="form-check-input no-blur" name="cron_aktiv"
+                                   type="checkbox" role="switch" id="checkCronAktiv"
+                                   {% if s.cron_aktiv %}checked{% endif %}>
+                            <label class="form-check-label" for="checkCronAktiv">Cronjob aktiv</label>
+                        </div>
+                        <div class="form-check form-switch me-4">
+                            <input class="form-check-input no-blur" name="cron_update_post"
+                                   type="checkbox" role="switch" id="checkCronUpdateAktiv"
+                                   {% if s.cron_update_post %}checked{% endif %}>
+                            <label class="form-check-label" for="checkCronUpdateAktiv">Beitrag Update bei vorhandener eBay ID</label>
+                        </div>
+                    </div>
+                    {% if s.cron_aktiv %}
+                        <div class="form-text mt-2">
+                            <span class="d-block">nächste Synchronisierung am {{ dateTime|date('d.m.Y') }} um {{ dateTime|date('H:i:s') }} Uhr</span>
+                            <i class="bi bi-clock-history text-success me-1"></i><span id="nextSyncTime"></span>
+                        </div>
+                    {% endif %}
+                    <hr>
+                    <div class="row g-3">
+                        <div class="col-lg-6 col-12">
+                            <div class="form-floating">
+                                <select class="form-select no-blur mw-100" name="selected_cron_sync_interval"
+                                        id="selectInterval"
+                                        aria-label="select Synchronisierungsintervall">
+                                    {% for iv in select.select_api_sync_interval %}
+                                        <option value="{{ iv.id }}"
+                                                {% if s.selected_cron_sync_interval == iv.id %}selected{% endif %}>{{ iv.bezeichnung }}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="selectInterval">Synchronisierungsintervall</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="form-floating">
+                                <select class="form-select no-blur mw-100" name="plugin_min_role"
+                                        id="selectUserRole"
+                                        aria-label="select mindestanforderung">
+                                    {% for ur in select.select_user_role %}
+                                        <option value="{{ ur.value }}"
+                                                {% if s.plugin_min_role == ur.value %}selected{% endif %}>{{ ur.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="selectUserRole">Mindestvoraussetzung für die Verwendung dieses
+                                    Plugins</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div class="form-check form-switch me-4 my-1">
+                                    <input class="form-check-input no-blur" name="bootstrap_css_aktiv" type="checkbox"
+                                           role="switch"
+                                           id="checkBsCss" {% if s.bootstrap_css_aktiv %}checked{% endif %}>
+                                    <label class="form-check-label" for="checkBsCss">Frontend Bootstrap CSS
+                                        aktiv</label>
+                                </div>
+                                <div class="form-check form-switch my-1">
+                                    <input class="form-check-input no-blur" name="bootstrap_js_aktiv" type="checkbox"
+                                           role="switch"
+                                           id="checkBsJs" {% if s.bootstrap_js_aktiv %}checked{% endif %}>
+                                    <label class="form-check-label" for="checkBsJs">Frontend Bootstrap JS aktiv</label>
+                                </div>
+                            </div>
+                            <div class="form-text">
+                                CSS Klasse für Wrapper: <code>.wp-ebay-classifieds</code>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success my-3">
+                                <i class="bi bi-save2 me-1"></i>
+                                Speichern
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card shadow-sm mb-2">
+            <div class="card-header fs-5 text-white fw-semibold bg-orange d-flex align-items-center py-3">
+                <div> Regular Expression <span class="fw-normal">Einstellungen</span></div>
+            </div>
+            <div class="card-body pp-3">
+                <button data-bs-target="#expertSettings" data-bs-toggle="collapse" class="btn btn-outline-secondary">
+                    <i class="bi bi-exclamation-circle me-1"></i>
+                    Einstellungen anzeigen
+                </button>
+                <div class="collapse" id="expertSettings">
+                    <hr>
+                    <i class="bi bi-exclamation-triangle-fill text-danger me-1"></i>
+                    Ändern Sie diese Einstellungen nur, wenn Sie genau wissen, was Sie tun.
+                    <hr>
+                    <h5 class="fw-normal pb-3"><span class="fw-semibold">Import</span> Regular Expression</h5>
+                    <form class="wec-admin-form">
+                        <input type="hidden" name="method" value="update_expert_settings">
+                        <div class="row g-3">
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_image }}"
+                                           name="regex_image"
+                                           id="regImage" placeholder="regEx Image" required>
+                                    <label for="regImage">Regex Bilder</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_check_tags }}"
+                                           name="regex_check_tags"
+                                           id="regCheckTags" placeholder="regEx Image" required>
+                                    <label for="regCheckTags">Regex Check Tags</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_description }}"
+                                           name="regex_description"
+                                           id="regBeschreibung" placeholder="regEx Image" required>
+                                    <label for="regBeschreibung">Regex Beschreibung</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_street }}"
+                                           name="regex_street"
+                                           id="regStreet" placeholder="regEx Image" required>
+                                    <label for="regStreet">Regex Strasse</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_split_street }}"
+                                           name="regex_split_street"
+                                           id="regExtractStreet" placeholder="regEx Image" required>
+                                    <label for="regExtractStreet">Regex extract Strasse</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_location }}"
+                                           name="regex_location"
+                                           id="regLocation" placeholder="regEx Image" required>
+                                    <label for="regLocation">Regex Location</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_split_location }}"
+                                           name="regex_split_location"
+                                           id="regExtractLocation" placeholder="regEx Image" required>
+                                    <label for="regExtractLocation">Regex extract Location</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_detail_list }}"
+                                           name="regex_detail_list"
+                                           id="regDetailList" placeholder="regEx Image" required>
+                                    <label for="regDetailList">Regex Detailliste</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur"
+                                           value="{{ s.regex_detail_list_extract }}" name="regex_detail_list_extract"
+                                           id="regExtractDetailList" placeholder="regEx Image" required>
+                                    <label for="regExtractDetailList">Regex extract Detailliste</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_api_url }}"
+                                           name="regex_api_url"
+                                           id="regApiUrl" placeholder="regEx Image" required>
+                                    <label for="regApiUrl">Regex Api-Url</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <h5 class="pt-3">Standard <span class="fw-normal">User</span></h5>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_id }}"
+                                           name="regex_std_ebay_id"
+                                           id="regStdId" placeholder="regEx Image" required>
+                                    <label for="regStdId">ebay ID </label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_url }}"
+                                           name="regex_std_ebay_url"
+                                           id="regStdUrl" placeholder="regEx Image" required>
+                                    <label for="regStdUrl">Artikel URL </label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_titel_img }}"
+                                           name="regex_std_ebay_titel_img"
+                                           id="regStdTitleImg" placeholder="regEx Image" required>
+                                    <label for="regStdTitleImg">Artikel Titel Image </label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_titel_img_check }}"
+                                           name="regex_std_ebay_titel_img_check"
+                                           id="regStdTitleImgCheck" placeholder="regEx Image" required>
+                                    <label for="regStdTitleImgCheck">Artikel Titel Image Check</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_titel }}"
+                                           name="regex_std_ebay_titel"
+                                           id="regStdTitle" placeholder="regEx Image" required>
+                                    <label for="regStdTitle">Artikel Titel</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_beschreibung }}"
+                                           name="regex_std_ebay_beschreibung"
+                                           id="regStdBeschreibung" placeholder="regEx Image" required>
+                                    <label for="regStdBeschreibung">Artikel Beschreibung</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_location }}"
+                                           name="regex_std_ebay_location"
+                                           id="regStdLocation" placeholder="regEx Image" required>
+                                    <label for="regStdLocation">Artikel Location</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_date }}"
+                                           name="regex_std_ebay_date"
+                                           id="regStdDate" placeholder="regEx Image" required>
+                                    <label for="regStdDate">Artikel Datum</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_ebay_price }}"
+                                           name="regex_std_ebay_price"
+                                           id="regStdPrice" placeholder="regEx Image" required>
+                                    <label for="regStdPrice">Artikel Preis</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control no-blur" value="{{ s.regex_std_url }}"
+                                           name="regex_std_url"
+                                           id="regStdOverUrl" placeholder="regEx Image" required>
+                                    <label for="regStdOverUrl">Übersicht URL</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 pb-3">
+                                <hr>
+                                <div class="d-md-flex d-block align-items-center">
+                                    <button type="submit" class="btn btn-danger my-1">
+                                        <i class="bi bi-exclamation-circle me-1"></i>
+                                        Speichern
+                                    </button>
+                                    <button data-type="load_default_expression" type="button"
+                                            class="wec-action ms-lg-auto my-1 btn btn-secondary">
+                                        <i class="bi bi-exclamation-circle me-1"></i>
+                                        Default Einstellungen laden
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

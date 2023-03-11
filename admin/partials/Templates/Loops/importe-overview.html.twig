@@ -1,0 +1,38 @@
+<button data-handle="insert"
+        data-type="ebay_import_template_handle"
+        class="wec-action btn btn-success">
+    <i class="bi bi-node-plus me-1"></i>
+    Import hinzufügen
+</button>
+<hr>
+<div class="container text-center">
+    {% if not data %}<h4 class="pt-3">
+        <i class="bi bi-exclamation-triangle me-1 text-danger"></i>
+        keine Importe vorhanden
+    </h4>{% endif %}
+    <div class="row g-3">
+        {% for d in data %}
+            <div id="import{{ d.id }}" class="col-xl-3 col-lg-4 col-md-6 col-12">
+                <div class="card d-flex flex-column h-100">
+                    <div class="card-body d-flex flex-column align-items-center" style="min-height: 70px">
+                        {{ d.bezeichnung }}
+                        <small>
+                            <span class="fw-semibold">Kategorie:</span>
+                           <span class="text-truncate">{{ d.term_id|get_category }}</span>
+                            <br>
+                        {% if d.pro_user == 1 %}Pro User{% else %}Standard User{% endif %}
+                        </small>
+                    </div>
+                    <div class="card-footer bg-white mt-auto">
+                        <button data-type="ebay_import_template_handle" data-handle="update" data-id="{{ d.id }}"
+                                class="wec-action btn btn-success btn-sm">Bearbeiten
+                        </button>
+                        <button data-type="delete_import" data-id="{{ d.id }}" class="wec-action btn btn-danger btn-sm">
+                            Löschen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

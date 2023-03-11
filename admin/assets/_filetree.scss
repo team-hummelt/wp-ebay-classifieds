@@ -1,0 +1,262 @@
+
+/*folder styles*/
+.table-file.folder
+{
+	background: url(images/folder.png) no-repeat left top;
+}
+.table-file.expanded
+{
+	background: url(images/folder_open.png) no-repeat left top;
+}
+.table-file.file
+{
+	background: url(images/file.png) no-repeat left top;
+}
+.table-file.wait
+{
+	background: url(images/spinner.gif) no-repeat left top;
+}
+/*extensions and mime types*/
+.table-file.ext_3gp
+{
+	background: url(images/film.png) no-repeat left top;
+}
+.table-file.ext_afp
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_afpa
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_asp
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_aspx
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_avi
+{
+	background: url(images/film.png) no-repeat left top;
+}
+.table-file.ext_bat
+{
+	background: url(images/application.png) no-repeat left top;
+}
+.table-file.ext_bmp
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_c
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_cfm
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_cgi
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_com
+{
+	background: url(images/application.png) no-repeat left top;
+}
+.table-file.ext_cpp
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_css
+{
+	background: url(images/css.png) no-repeat left top;
+}
+.table-file.ext_doc, .table-file.ext_docx
+{
+	background: url(images/doc.png) no-repeat left top;
+}
+.table-file.ext_exe
+{
+	background: url(images/application.png) no-repeat left top;
+}
+.table-file.ext_gif
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_fla
+{
+	background: url(images/flash.png) no-repeat left top;
+}
+.table-file.ext_h
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_htm
+{
+	background: url(images/html.png) no-repeat left top;
+}
+.table-file.ext_html
+{
+	background: url(images/html.png) no-repeat left top;
+}
+.table-file.ext_jar
+{
+	background: url(images/java.png) no-repeat left top;
+}
+.table-file.ext_jpg
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_jpeg
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_js
+{
+	background: url(images/script.png) no-repeat left top;
+}
+.table-file.ext_lasso
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_log
+{
+	background: url(images/txt.png) no-repeat left top;
+}
+.table-file.ext_m4p
+{
+	background: url(images/music.png) no-repeat left top;
+}
+.table-file.ext_mov
+{
+	background: url(images/film.png) no-repeat left top;
+}
+.table-file.ext_mp3
+{
+	background: url(images/music.png) no-repeat left top;
+}
+.table-file.ext_mp4
+{
+	background: url(images/film.png) no-repeat left top;
+}
+.table-file.ext_mpg
+{
+	background: url(images/film.png) no-repeat left top;
+}
+.table-file.ext_mpeg
+{
+	background: url(images/film.png) no-repeat left top;
+}
+.table-file.ext_ogg
+{
+	background: url(images/music.png) no-repeat left top;
+}
+.table-file.ext_pcx
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_pdf
+{
+	background: url(images/pdf.png) no-repeat center center;
+}
+.table-file.ext_php
+{
+	background: url(images/php.png) no-repeat left top;
+}
+.table-file.ext_png
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_ppt
+{
+	background: url(images/ppt.png) no-repeat left top;
+}
+.table-file.ext_psd
+{
+	background: url(images/psd.png) no-repeat left top;
+}
+.table-file.ext_pl
+{
+	background: url(images/script.png) no-repeat left top;
+}
+.table-file.ext_py
+{
+	background: url(images/script.png) no-repeat left top;
+}
+.table-file.ext_rb
+{
+	background: url(images/ruby.png) no-repeat left top;
+}
+.table-file.ext_rbx
+{
+	background: url(images/ruby.png) no-repeat left top;
+}
+.table-file.ext_rhtml
+{
+	background: url(images/ruby.png) no-repeat left top;
+}
+.table-file.ext_rpm
+{
+	background: url(images/linux.png) no-repeat left top;
+}
+.table-file.ext_ruby
+{
+	background: url(images/ruby.png) no-repeat left top;
+}
+.table-file.ext_sql
+{
+	background: url(images/db.png) no-repeat left top;
+}
+.table-file.ext_swf
+{
+	background: url(images/flash.png) no-repeat left top;
+}
+.table-file.ext_tif
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_tiff
+{
+	background: url(images/picture.png) no-repeat left top;
+}
+.table-file.ext_txt
+{
+	background: url(images/txt.png) no-repeat left top;
+}
+.table-file.ext_vb
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_wav
+{
+	background: url(images/music.png) no-repeat left top;
+}
+.table-file.ext_wmv
+{
+	background: url(images/film.png) no-repeat left top;
+}
+.table-file.ext_xls, .table-file.ext_csv, .table-file.ext_xlsx
+{
+	background: url(images/xls.png) no-repeat left top;
+}
+.table-file.ext_xml
+{
+	background: url(images/code.png) no-repeat left top;
+}
+.table-file.ext_zip
+{
+	background: url(images/zip.png) no-repeat left top;
+}
+.table-file.ext_xd
+{
+	background: url(images/xd.png) no-repeat left top;
+}
+
+.file {
+	position: relative;
+	display: block;
+	width: 32px;
+	height: 32px;
+}

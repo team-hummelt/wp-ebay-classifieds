@@ -1,0 +1,87 @@
+{% set container = 'container' %}
+{# {% set headertxt = 'Theme Einstellungen' %}
+{% set subtext = 'Optionen' %}
+#}
+{% extends "@layout/layout.html.twig" %}
+
+ {% block content %}
+     <div class="card-body" style="min-height: 65vh">
+         <div class="d-flex flex-wrap align-items-center">
+             <button data-type="get_import_overview_template" data-target="#colImportOverview" data-parent="#collParent"
+                     class="wec-action btn-toggle btn btn-orange-outline me-1 my-1" disabled>
+                 <i class="bi bi-arrow-right-circle me-1"></i>
+                 Übersicht
+             </button>
+             <button data-type="get_import_settings_template" data-target="#colImportSettings" data-parent="#collParent"
+                     class="wec-action btn-toggle btn btn-orange-outline me-1 my-1">
+                 <i class="bi bi-tools me-1"></i>
+                 Plugin Einstellungen
+             </button>
+             <button data-bs-target="#colImportHelp" data-bs-toggle="collapse"
+                     class="btn-toggle btn btn-orange-outline ms-auto my-1">
+                 <i class="bi bi-lightbulb me-1"></i>
+                 Hilfe
+             </button>
+         </div>
+         <hr>
+         <div id="collParent">
+             <div id="colImportOverview" data-bs-parent="#collParent" class="collapse show"></div>
+             <div id="colImportSettings" data-bs-parent="#collParent" class="collapse"></div>
+             <div id="colImportHandle" data-bs-parent="#collParent" class="collapse"></div>
+             <div id="colImportHelp" data-bs-parent="#collParent" class="collapse">
+                 <h4>
+                     <i class="bi bi-lightbulb text-orange me-1"></i>
+                     Hilfe
+                 </h4>
+                 <hr>
+                 <h5 class="fw-semibold mb-3">Verfügbare Metadaten:</h5>
+                 <ul class="list-unstyled">
+                     <li><code>_import_id</code></li>
+                     <li><code>_ebay_id</code></li>
+                     <li><code>_ebay_url</code></li>
+                     <li><code>_ebay_location</code></li>
+                     <li><code>_ebay_price</code></li>
+                     <li><code>_ebay_strassen_name</code></li>
+                     <li><code>_ebay_hnr</code></li>
+                     <li><code>_ebay_plz</code></li>
+                     <li><code>_ebay_ort</code></li>
+                     <li><code>_ebay_osm_data</code> <small class="small-xl">(OpenStreetMap JSON-Object)</small></li>
+                 </ul>
+                 <hr>
+
+                 <h5 class="fw-semibold">Metadaten abrufen:</h5>
+                 <p>
+                     <b class="fw-semibold"> Filter alle Metadaten:</b><br>
+                     apply_filters('wp-ebay-classifieds/get_ebay_import_meta', <code>POST-ID</code>);
+                 </p>
+                 <p>
+                     <b class="fw-semibold"> Filter Metadaten einzeln:</b><br>
+                     apply_filters('wp-ebay-classifieds/get_ebay_import_meta', <code>POST-ID</code>, <code>'META
+                         BEZEICHNUNG'</code>);
+                 </p>
+                 <hr>
+                 <h5 class="fw-semibold">Gutenberg-Block Callback Funktion aufrufen:</h5>
+
+                 <pre>
+                     <br>
+function <span class="text-danger">meine_callback_function</span>($posts, $attributes, $meta, $term, $import)<br>
+{<br>
+    ob_start();<br>
+    global $posts;<br><br>
+                     <span class="text-danger">print_r($posts);</span><br>
+                     <span class="text-danger">print_r($attributes);</span><br>
+                     <span class="text-danger">print_r($meta);</span><br>
+                     <span class="text-danger">print_r($term);</span><br>
+                     <span class="text-danger">print_r($import);</span><br><br>
+                     <i class="text-primary">echo meine Template-Ausgabe</i><br><br>
+     return ob_get_clean();<br>
+}<br><br><br>
+
+if(is_plugin_active('wp-ebay-classifieds/wp-ebay-classifieds.php')){<br>
+                     add_filter('gutenberg_block_ebay_importer_callback', '<code class="text-danger">meine_callback_function</code>', 100, 5);<br>
+}<br>
+                 </pre>
+             </div>
+         </div>
+     </div>
+ {% endblock %}

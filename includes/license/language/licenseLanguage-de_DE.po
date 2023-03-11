@@ -1,0 +1,106 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-02-18 17:50+0100\n"
+"PO-Revision-Date: 2022-02-18 17:51+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html;esc_html__;esc_att;esc_attr__;"
+"esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .idea\n"
+"X-Poedit-SearchPathExcluded-1: .git\n"
+
+#: includes/class-post-selector.php:224
+#, php-format
+msgid ""
+"This plugin has been disabled because it requires a PHP version greater than "
+"%s and a WordPress version greater than %s. Your PHP version can be updated "
+"by your hosting provider."
+msgstr ""
+"Dieses Plugin wurde deaktiviert, weil es eine PHP-Version größer als %s und "
+"eine WordPress-Version größer als %s benötigt. Ihre PHP-Version kann von "
+"Ihrem Hosting-Anbieter aktualisiert werden."
+
+#: includes/license/admin/class_register_exec_license.php:191
+#: includes/license/admin/class_register_exec_license.php:217
+#, php-format
+msgid "The %s %s has been disabled. Contact the administrator."
+msgstr "Der %s %s wurde deaktiviert. Wenden Sie sich an den Administrator."
+
+#: includes/license/class_register_product_license.php:139
+#, php-format
+msgid "%s invalid license: To activate, enter your credentials."
+msgstr ""
+"%s ungültige Lizenz: Geben Sie zur Aktivierung Ihre Anmeldeinformationen ein."
+
+#: includes/license/class_register_product_license.php:147
+#, php-format
+msgid "The %s plugin has been successfully activated."
+msgstr "Das %s Plugin wurde erfolgreich aktiviert."
+
+#: includes/license/partials/license-activate-product.php:29
+#, php-format
+msgid "%s \"%s\" could not be activated!"
+msgstr "%s \"%s\" konnte nicht aktiviert werden!"
+
+#: includes/license/partials/license-activate-product.php:43
+msgid "activate"
+msgstr "aktivieren"
+
+#: includes/license/partials/license-activate-product.php:53
+msgid "successfully activated"
+msgstr "erfolgreich aktiviert"
+
+#: includes/license/partials/license-activate-product.php:55
+msgid "Complete activation"
+msgstr "Aktivierung abschließen"
+
+#: includes/license/partials/license-activate-product.php:60
+msgid "Enter access data"
+msgstr "Zugangsdaten eingeben"
+
+#: includes/license/partials/license-activate-product.php:69
+msgid "Client ID"
+msgstr "Client ID"
+
+#: includes/license/partials/license-activate-product.php:77
+msgid "Client secret"
+msgstr "Client secret"
+
+#: includes/license/partials/license-activate-product.php:85
+msgid "Save"
+msgstr "Speichern"
+
+#: includes/license/partials/license-activate-product.php:91
+msgid "ERROR"
+msgstr "FEHLER"
+
+#: includes/update-checker/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:54
+msgid "View details"
+msgstr "Details anzeigen"
+
+#: includes/update-checker/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "Mehr Informationen zu %s"
+
+#: includes/update-checker/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "Nach Aktualisierungen suchen"
+
+#: includes/update-checker/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:224
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "Unbekannter Status für Aktualisierungscheck \"%s\""
+
+#: includes/update-checker/yahnis-elsts/plugin-update-checker/Puc/v4p11/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "Es steht kein Änderungsprotokoll zur Verfügung."

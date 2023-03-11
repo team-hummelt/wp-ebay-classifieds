@@ -1,0 +1,13 @@
+.idea
+.github
+.vscode
+includes/vendor/twbs/bootstrap-icons/docs
+includes/vendor/twbs/bootstrap-icons/icons
+includes/vendor/twbs/bootstrap-icons/build
+includes/vendor/twbs/bootstrap-icons/.github
+includes/Gutenberg/Sidebar/src
+includes/Gutenberg/Sidebar/node_modules
+includes/Gutenberg/Sidebar/package-lock.json
+includes/Gutenberg/ImportBlock/src
+includes/Gutenberg/ImportBlock/node_modules
+includes/Gutenberg/ImportBlock/package-lock.json

@@ -1,0 +1,29 @@
+<div class="wp-ebay-classifieds">
+    <div class="{% if container is defined %}{{ container }}{% else %}container-fluid{% endif %}">
+        <div class="card bg-white card-license shadow-sm">
+            <div class="card-header py-4 bg-white">
+                <img class="img-fluid ps-3" alt="" src="{{ plugin_url }}assets/images/ebay-kleinanzeigen-seeklogo.com-2.svg" width="280">
+            </div>
+            <div class="card-body mt-2 pb-4" style="min-height: 68vh">
+                <div class="col-12 mx-auto">
+                    <div class="card bg-light shadow-sm">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+                <div class="bottom-0 end-0 position-absolute my-1 me-3 text-end">
+                    <small class="small-xl">
+                        <i class="bi bi-database"></i> <span class="text-danger">{{ 'dbVersion'|dbVersion }}</span> | <i class="bi bi-cart text-muted"></i> <span class="text-danger">v{{ 'version'|version }}</span>
+                    </small>
+                </div>
+                <div class="bottom-0 start-0 position-absolute my-1 ms-3 text-start">
+                    <small class="small-xl">
+                        <i class="bi bi-diagram-3 text-muted"></i> <span class="text-muted">{{ 'full_name'|get_uname }}</span>
+                    </small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="snackbar-success"></div>
+<div id="snackbar-warning"></div>

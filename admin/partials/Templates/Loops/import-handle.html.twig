@@ -1,0 +1,136 @@
+<button data-type="get_import_overview_template" data-target="#colImportOverview"
+        class="wec-action btn btn-success">
+    <i class="bi bi-reply-all-fill me-1"></i>
+    zurück
+</button>
+<hr>
+<div class="container">
+    <form class="{% if handle == 'update' %}ebay-importer-admin-autosave{% else %}wec-admin-form{% endif %}"
+          data-target=".import">
+        <input type="hidden" name="method" value="import_db_handle">
+        <input type="hidden" name="id" value="{{ id }}">
+        <input type="hidden" name="handle" value="{{ handle }}">
+        <div class="col-xl-10 col-12 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-header fs-5 text-white bg-orange d-flex align-items-center py-3">
+                    <div> Import {% if handle == 'insert' %}hinzufügen{% else %}bearbeiten{% endif %}</div>
+                    <div class="text-white import ms-auto ajax-status-spinner"></div>
+                </div>
+                <div class="card-body pb-4">
+                    <div class="row g-3">
+                        <div class="col-xl-6 col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control no-blur" name="bezeichnung"
+                                       value="{{ d.bezeichnung }}" id="inputBezeichnung"
+                                       placeholder="Import Bezeichnung"
+                                       required>
+                                <label for="inputBezeichnung">Import Bezeichnung <sup>*</sup> <small>(max: 64
+                                        Zeichen)</small></label>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-12">
+                            <div class="form-floating">
+                                <input type="number" class="form-control no-blur" name="site_number"
+                                       value="{% if handle == 'insert' %}1{% else %}{{ d.site_number }}{% endif %}"
+                                       id="inputSiteNumber"
+                                       placeholder="Import URL">
+                                <label for="inputSiteNumber">Seiten Nummer</label>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-12">
+                            <div class="form-floating">
+                                <input type="number" class="form-control no-blur" name="import_count"
+                                       value="{% if handle == 'insert' %}25{% else %}{{ d.import_count }}{% endif %}"
+                                       id="inputSiteCount"
+                                       placeholder="Import Count"
+                                       required>
+                                <label for="inputSiteCount">Import anzahl</label>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-12">
+                            <div class="form-floating">
+                                <input type="url" class="form-control no-blur" name="import_url"
+                                       value="{{ d.import_url }}" id="inputUrl"
+                                       placeholder="Import URL"
+                                       required>
+                                <label for="inputUrl">Import URL <sup>*</sup> <small>(max: 128 Zeichen)</small></label>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-12">
+                            <div class="form-floating">
+                                <select class="form-select no-blur mw-100" name="term_id" id="selectCategory"
+                                        aria-label="Category select">
+                                    {% for t in taxonomy %}
+                                        <option value="{{ t.term_id }}"
+                                                {% if d.term_id == t.term_id %}selected{% endif %}>{{ t.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="selectCategory">Kategorie</label>
+                            </div>
+                        </div>
+
+                        <hr class="mb-0">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <div class="form-check form-switch me-4 my-1">
+                                    <input class="form-check-input no-blur" type="checkbox" name="bilder_importieren"
+                                           role="switch"
+                                           id="checkImportImg"
+                                           {% if handle == 'insert' %}checked{% else %}{% if d.bilder_importieren %}checked{% endif %}{% endif %}>
+                                    <label class="form-check-label" for="checkImportImg">Bilder speichern</label>
+                                </div>
+                                <div class="form-check form-switch my-1">
+                                    <input class="form-check-input no-blur" type="checkbox" name="osm_aktiv"
+                                           role="switch"
+                                           id="checkOsmAktiv" {% if d.osm_aktiv %}checked{% endif %}>
+                                    <label class="form-check-label" for="checkOsmAktiv">OpenStreetMap aktiv</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mb-0">
+                        <div class="col-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input no-blur" value="1" type="radio" name="pro_user"
+                                       id="radioProUser1" {% if d.pro_user == 1 or handle == 'insert' %}checked{% endif %}>
+                                <label class="form-check-label" for="radioProUser1">
+                                    Pro User
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input no-blur" value="2" type="radio" name="pro_user"
+                                       id="radioProUser2" {% if d.pro_user == 2 %}checked{% endif %}>
+                                <label class="form-check-label" for="radioProUser2">
+                                    Standard User
+                                </label>
+                            </div>
+                        </div>
+                        {% if handle == 'insert' %}
+                            <hr class="mb-0">
+                            <div>
+                                <button data-type="get_import_overview_template" data-target="#colImportOverview"
+                                        type="button" class="wec-action btn btn-secondary">
+                                    <i class="bi bi-x-circle me-1"></i>
+                                    Abbrechen
+                                </button>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="bi bi-save2 me-1"></i>
+                                    Import erstellen
+                                </button>
+                            </div>
+                        {% else %}
+                            <hr class="mb-0">
+                            <div>
+                                <button data-system="{{ system }}" data-type="now_synchronize" data-id="{{ id }}"
+                                        type="button" class="wec-action btn btn-success">
+                                    <i class="bi bi-repeat me-1"></i>
+                                    jetzt Synchronisieren
+                                </button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
